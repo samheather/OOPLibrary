@@ -27,6 +27,16 @@ class item:
     def setOwner(self, memberId):
         self._owner = memberId
 
+    def editItem(self):
+        choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher.")
+        newData = raw_input("Ok.  What do you want to change it to?")
+        if (choice == 1):
+            self._title = newData
+        elif (choice == 2):
+            self._author = newData
+        else:
+            print "Can't you even follow basic instructions?"
+
 ##              ADD IN APPROPRIATE GET METHODS FOR INFORMATION        
 
 class dvd(item):
@@ -42,6 +52,18 @@ class book:
 
     def getIsbn(self):
         return self.__isbn
+
+    def editBook(self):
+        choice = raw_input("Enter 1 to change title, 2 to change author, 3 to change ISBN: ")
+        newData = raw_input("Enter the new value: ")
+        if (choice ==  1):
+            self._title = newData
+        elif (choice == 2):
+            self._author = newData
+        elif (choice == 3):
+            self._isbn = newData
+        else:
+            print "Can't you even follow basic instructions"
 
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Author : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner) + ', ISBN : ' + str(self.__isbn)
@@ -91,11 +113,7 @@ class member:
 
 class library:
     def __init__(self):
-        self.__dvds = []
-        self.__books = []
-        self.__cds = []
-        self.__games = []
-        self.__members = []
+        self.__items = []
 
     def addMember(self, newFirstName, newSurname, newPostcode):
         newId = len(self.__members)
@@ -121,95 +139,33 @@ class library:
         '''takes memberId as an input, prints member info'''
         print self.__members[memberId]
 
-    def addDvd(self, newTitle, newDirector):
-        newIdentifier = len(self.__dvds)
-        print "Identifier is: ", newIdentifier
-        self.__dvds.append(dvd(newTitle, newDirector, newIdentifier))
-
-    def editDvd(self, dvdId):
-        choice = input("Enter 1 to change Title, 2 to change Director")
-        newData = raw_input("Ok.  What do you want to change it to?")
-        if (choice == 1):
-            self.__dvds[dvdId].setTitle(newData)
-        elif (choice == 2):
-            self.__dvds[dvdId].setDirector(newData)
+    def addItem(self):
+        itemType = raw_input("Enter 1 for dvd, 2 for book, 3 for cd, 4 for game: "):
+        title = raw_input("Enter the title: ")
+        author = raw_input("Enter the author/artist/director/publisher: ")
+        uniId = raw_input("Enter the unique ID: ")
+        if self.__items.has_key(uniId):
+            print 'That key is not unique'
         else:
-            print "Can't you even follow basic instructions?"
+            if (itemType == 1):
+                self.__items[uniId] = dvd(title, author, uniId)
+            elif (itemType == 2):
+                isbn = raw_input("Ente hte ISBN number: ")
+                self.__items[uniId] = book(title, author, uniId, isbn)
+            elif (itemType == 3):
+                self.__items[uniId] = cd(title, author, uniId)
+            elif (itemType == 4):
+                self.__items[uniId] = game(title, author, uniId)
 
-    def viewDvd(self, dvdId):
-        '''takes dvdId as an input, prints DVD info'''
-        print self.__dvds[dvdId]
+    def viewItem(self):
+        uniId = raw_input("Enter the unique ID of the item whose information you wish to view: ")
+        print self.__items[uniId]
 
-    def deleteDvd(self, dvdId):
-        self.__dvds.pop(dvdId)
-
-    def addBook(self, newTitle, newAuthor, newIsbn):
-        newIdentifier = len(self.__books)
-        print "Identifier is: ", newIdentifier
-        self.__books.append(book(newTitle, newAuthor, newIdentifier, newIsbn))
-
-    def editBook(self, bookId):
-        choice = input("Enter 1 to change Title, 2 to change Author, 3to change Identifier")
-        newData = raw_input("Ok.  What do you want to change it to?")
-        if (choice == 1):
-            self.__books[bookId].setTitle(newData)
-        elif (choice == 2):
-            self.__books[bookId].setAuthor(newData)
-        elif (choice == 3):
-            self.__books[bookId].setIsbn(newData)
-        else:
-            print "Can't you even follow basic instructions?"
-
-    def viewBook(self, bookId):
-        '''takes dvdId as an input, prints DVD info'''
-        print self.__books[bookId]
-
-    def deleteBook(self, bookId):
-        self.__books.pop(bookId)
-
-    def addCd(self, newTitle, newArtist):
-        newIdentifier = len(self.__cds)
-        print "Identifier is: ", newIdentifier
-        self.__cds.append(cd(newTitle, newArtist, newIdentifier))
-
-    def editCd(self, cdId):
-        choice = input("Enter 1 to change Title, 2 to change Artist")
-        newData = raw_input("Ok.  What do you want to change it to?")
-        if (choice == 1):
-            self.__cds[cdId].setTitle(newData)
-        elif (choice == 2):
-            self.__cds[cdId].setArtist(newData)
-        else:
-            print "Can't you even follow basic instructions?"
-
-    def viewCd(self, cdId):
-        '''takes dvdId as an input, prints DVD info'''
-        print self.__cds[cdId]
-
-    def deleteCd(self, cdId):
-        self.__cds.pop(cdId)
-
-    def addGame(self, newTitle, newPublisher):
-        newIdentifier = len(self.__games)
-        print "Identifier is: ", newIdentifier
-        self.__games.append(game(newTitle, newPublisher, newIdentifier))
-
-    def editGame(self, gameId):
-        choice = input("Enter 1 to change Title, 2 to change Publisher")
-        newData = raw_input("Ok.  What do you want to change it to?")
-        if (choice == 1):
-            self.__games[gameId].setTitle(newData)
-        elif (choice == 2):
-            self.__games[gameId].setPublisher(newData)
-        else:
-            print "Can't you even follow basic instructions?"
-
-    def viewGame(self, gameId):
-        '''takes dvdId as an input, prints DVD info'''
-        print self.__games[gameId]
-
-    def deleteGame(self, gameId):
-        self.__games.pop(gameId)
+    def removeItem(self):
+        uniId = raw_input("Enter the ID of the item that you wish to delete: ")
+        self.__items.pop(uniId)
+        
+##                          UPDATED TO HERE, UNTESTED UP TO HERE.
 
 def startApp():
     while True:
