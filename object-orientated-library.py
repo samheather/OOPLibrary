@@ -13,13 +13,13 @@ class item:
         self._author = author
 
     def setAvailable(self):
-        if (self._available = True):
+        if (self._available == True):
             print 'Error - already set to this'
         else:
             self._availabe = True
 
     def setUnavailable(self):
-        if (self._available = False):
+        if (self._available == False):
             print 'Error - already set to this'
         else:
             self._unavailable = False
@@ -27,116 +27,32 @@ class item:
     def setOwner(self, memberId):
         self._owner = memberId
 
-class dvd:
-    def __init__(self, title, director, identifier):
-        self.__title = title
-        self.__director = director
-        self.__available = True
-        self.__identifier = identifier
-        self.__owner = None
+##              ADD IN APPROPRIATE GET METHODS FOR INFORMATION        
 
-    def getTitle(self):
-        return self.__title
-
-    def setTitle(self, title):
-        self.__title = title
-
-    def getDirector(self):
-        return self.__director
-
-    def setDirector(self, director):
-        self.__director = director
-
-    def available(self):
-        return self.__available
-
+class dvd(item):
     def __repr__(self):
-        return 'Title : ' + str(self.__title) + ', Director : ' + str(self.__director) + ', Available : ' + str(self.__available) + ', ID : ' + str(self.__identifier) + ', Owner : ' + str(self.__owner)
+        return 'Title : ' + str(self._title) + ', Director : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
 class book:
-    def __init__(self, title, author, identifier, isbn):
-        self.__title = title
-        self.__author = author
-        self.__available = True
-        self.__identifier = identifier
-        self.__owner = None
+    def __init__(self, isbn):
         self.__isbn = isbn
-
-    def getTitle(self):
-        return self.__title
-
-    def setTitle(self, title):
-        self.__title = title
-
-    def getAuthor(self):
-        return self.__author
-
-    def setAuthor(self, author):
-        self.__author = author
-
-    def available(self):
-        return self.__available
-
-    def getIsbn(self):
-        return self.__isbn
 
     def setIsbn(self, isbn):
         self.__isbn = isbn
 
-    def __repr__(self):
-        return 'Title : ' + str(self.__title) + ', Author : ' + str(self.__author) + ', Available : ' + str(self.__available) + ', ID : ' + str(self.__identifier) + ', Owner : ' + str(self.__owner) + ', ISBN : ' + str(self.__isbn)
-
-class cd:
-    def __init__(self, title, artist, identifier):
-        self.__title = title
-        self.__artist = artist
-        self.__available = True
-        self.__identifier = identifier
-        self.__owner = None
-
-    def getTitle(self):
-        return self.__title
-
-    def setTitle(self, title):
-        self.__title = title
-
-    def getArtist(self):
-        return self.__artist
-
-    def setArtist(self, artist):
-        self.__artist = artist
-
-    def available(self):
-        return self.__available
+    def getIsbn(self):
+        return self.__isbn
 
     def __repr__(self):
-        return 'Title : ' + str(self.__title) + ', Artist : ' + str(self.__artist) + ', Available : ' + str(self.__available) + ', ID : ' + str(self.__identifier) + ', Owner : ' + str(self.__owner)
+        return 'Title : ' + str(self._title) + ', Author : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner) + ', ISBN : ' + str(self.__isbn)
 
-class game:
-    def __init__(self, title, publisher, identifier):
-        self.__title = title
-        self.__publisher = publisher
-        self.__available = True
-        self.__identifier = identifier
-        self.__owner = None
-
-    def getTitle(self):
-        return self.__title
-
-    def setTitle(self, title):
-        self.__title = title
-
-    def getPublisher(self):
-        return self.__publisher
-
-    def setPublisher(self, publisher):
-        self.__publisher = publisher
-
-    def available(self):
-        return self.__available
-
+class cd(item):
     def __repr__(self):
-        return 'Title : ' + str(self.__title) + ', Publisher : ' + str(self.__publisher) + ', Available : ' + str(self.__available) + ', ID : ' + str(self.__identifier) + ', Owner : ' + str(self.__owner)
+        return 'Title : ' + str(self._title) + ', Artist : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
+
+class game(item):
+    def __repr__(self):
+        return 'Title : ' + str(self._title) + ', Publisher : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
 class member:
     def __init__(self, uniqId, firstName, surname, postcode):
@@ -336,10 +252,10 @@ def itemFunctions():
         myLibrary.deleteMember(memberId)
         
         
-myLibrary = library()
-myLibrary.addDvd('Pirates of', 'John')
-myLibrary.viewDvd(0)
-myLibrary.editMember(0)
-myLibrary.viewMember(0)
+##myLibrary = library()
+##myLibrary.addDvd('Pirates of', 'John')
+##myLibrary.viewDvd(0)
+##myLibrary.editMember(0)
+##myLibrary.viewMember(0)
 ##my_dvd = dvd('Hi', 'Sam', '1')
 ##my_dvd
