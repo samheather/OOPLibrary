@@ -44,7 +44,7 @@ class dvd(item):
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Director : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
-class book:
+class book(item):
     def __init__(self, isbn):
         self.__isbn = isbn
 
@@ -201,14 +201,10 @@ def memberFunctions():
         myLibrary.deleteMember(memberId)
 
 def itemFunctions():
-<<<<<<< HEAD
     choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete an item."))
-=======
-    choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete aan item."))
     while choiceFunct not in (1, 2, 3):
         print "Follow the instructions dumbo"
         choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
->>>>>>> patch-1
     if (choiceFunct == 1):
         firstName = raw_input("Enter their First Name:")
         lastName = raw_input("Enter their Surname:")
