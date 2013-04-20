@@ -45,7 +45,8 @@ class DVD(Item):
         return 'Title : ' + str(self._title) + ', Director : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
 class Book(Item):
-    def __init__(self, isbn):
+    def __init__(self, title, author, uniId, isbn):
+        Item.__init__(self, title, author, uniId)
         self.__isbn = isbn
 
     def setIsbn(self, isbn):
