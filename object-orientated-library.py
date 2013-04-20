@@ -185,7 +185,7 @@ def startApp():
 
 def memberFunctions():
     choiceFunct = int(raw_input("Enter 1 to create a member, 2 to view a members information and 3 to delete a member"))
-    if choiceFunct not in (1, 2, 3):
+    while choiceFunct not in (1, 2, 3):
         print "Follow the instructions dumbo"
         choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
     if (choiceFunct == 1):
@@ -205,7 +205,7 @@ def itemFunctions():
     choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete an item."))
 =======
     choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete aan item."))
-    if choiceFunct not in (1, 2, 3):
+    while choiceFunct not in (1, 2, 3):
         print "Follow the instructions dumbo"
         choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
 >>>>>>> patch-1
