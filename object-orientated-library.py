@@ -22,7 +22,7 @@ class item:
         if (self._available == False):
             print 'Error - already set to this'
         else:
-            self._unavailable = False
+            self._available = False
 
     def setOwner(self, memberId):
         self._owner = memberId
