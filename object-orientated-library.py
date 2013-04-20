@@ -28,10 +28,10 @@ class Item:
         self._owner = memberId
 
     def editItem(self):
-        choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher.")
+        choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher: ")
         while choice not in (1, 2):
             print "Can't you even follow basic instructions?"
-            choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher.")
+            choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher: ")
         newData = raw_input("Ok.  What do you want to change it to?")
         if (choice == 1):
             self._title = newData
@@ -121,13 +121,13 @@ class Library:
     def addMember(self, newFirstName, newSurname, newPostcode):
         newId = len(self.__members)
         print "Member ID is: ", newId
-        self.__members.append(member(newId, newFirstName, newSurname, newPostcode))
+        self.__members.append(Member(newId, newFirstName, newSurname, newPostcode))
 
     def editMember(self, memberId):
-        choice = input("Enter 1 to change first name, 2 to change surname, 3 to change postcode")
+        choice = input("Enter 1 to change first name, 2 to change surname, 3 to change postcode: ")
         while choice not in (1, 2, 3):
             print "Can't you even follow basic instructions?"
-            choice = input("Enter 1 to change first name, 2 to change surname, 3 to change postcode")
+            choice = input("Enter 1 to change first name, 2 to change surname, 3 to change postcode: ")
         newData = raw_input("Ok.  What do you want to change it to?")
         if (choice == 1):
             self.__members[memberId].changeFirstName(newData)
@@ -144,7 +144,7 @@ class Library:
         print self.__members[memberId]
 
     def addItem(self):
-        itemType = raw_input("Enter 1 for dvd, 2 for book, 3 for cd, 4 for game: "):
+        itemType = raw_input("Enter 1 for dvd, 2 for book, 3 for cd, 4 for game: ")
         title = raw_input("Enter the title: ")
         author = raw_input("Enter the author/artist/director/publisher: ")
         uniId = raw_input("Enter the unique ID: ")
@@ -152,14 +152,14 @@ class Library:
             print 'That key is not unique'
         else:
             if (itemType == 1):
-                self.__items[uniId] = dvd(title, author, uniId)
+                self.__items[uniId] = DVD(title, author, uniId)
             elif (itemType == 2):
                 isbn = raw_input("Ente hte ISBN number: ")
-                self.__items[uniId] = book(title, author, uniId, isbn)
+                self.__items[uniId] = Book(title, author, uniId, isbn)
             elif (itemType == 3):
-                self.__items[uniId] = cd(title, author, uniId)
+                self.__items[uniId] = CD(title, author, uniId)
             elif (itemType == 4):
-                self.__items[uniId] = game(title, author, uniId)
+                self.__items[uniId] = Game(title, author, uniId)
 
     def viewItem(self):
         uniId = raw_input("Enter the unique ID of the item whose information you wish to view: ")
@@ -173,10 +173,10 @@ class Library:
 
 def startApp():
     while True:
-        choiceCat = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
+        choiceCat = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return: "))
         while choiceCat not in (1, 2, 3):
             print "Follow the instructions dumbo"
-            choiceCat = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
+            choiceCat = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return: "))
         if (choiceCat == 1):
             memberFunctions()
         elif (choiceCat == 2):
@@ -185,44 +185,47 @@ def startApp():
             checkInOut()
 
 def memberFunctions():
-    choiceFunct = int(raw_input("Enter 1 to create a member, 2 to view a members information and 3 to delete a member"))
+    choiceFunct = int(raw_input("Enter 1 to create a member, 2 to view a members information and 3 to delete a member: "))
     while choiceFunct not in (1, 2, 3):
         print "Follow the instructions dumbo"
-        choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
+        choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return: "))
     if (choiceFunct == 1):
-        firstName = raw_input("Enter their First Name:")
-        lastName = raw_input("Enter their Surname:")
-        postcode = raw_input("Enter their postcode:")
+        firstName = raw_input("Enter their First Name: ")
+        lastName = raw_input("Enter their Surname: ")
+        postcode = raw_input("Enter their postcode: ")
         myLibrary.addMember(firstName, lastName, postcode)
     if (choiceFunct == 2):
-        memberId = int(raw_input("Enter the ID of the member whose information you wish to view:"))
+        memberId = int(raw_input("Enter the ID of the member whose information you wish to view: "))
         myLibrary.viewMember(memberId)
     if (choiceFunct == 3):
-        memberId = int(raw_input("Enter the ID of the member to delete:"))
+        memberId = int(raw_input("Enter the ID of the member to delete: "))
         myLibrary.deleteMember(memberId)
 
 def itemFunctions():
-    choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete an item."))
+    choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete an item: "))
     while choiceFunct not in (1, 2, 3):
         print "Follow the instructions dumbo"
-        choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
+        choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return: "))
     if (choiceFunct == 1):
-        firstName = raw_input("Enter their First Name:")
-        lastName = raw_input("Enter their Surname:")
-        postcode = raw_input("Enter their postcode:")
+        firstName = raw_input("Enter their First Name: ")
+        lastName = raw_input("Enter their Surname: ")
+        postcode = raw_input("Enter their postcode: ")
         myLibrary.addMember(firstName, lastName, postcode)
     if (choiceFunct == 2):
-        memberId = int(raw_input("Enter the ID of the member whose information you wish to view:"))
+        memberId = int(raw_input("Enter the ID of the member whose information you wish to view: "))
         myLibrary.viewMember(memberId)
     if (choiceFunct == 3):
-        memberId = int(raw_input("Enter the ID of the member to delete:"))
+        memberId = int(raw_input("Enter the ID of the member to delete: "))
         myLibrary.deleteMember(memberId)
+
+       
         
-        
-##myLibrary = library()
+myLibrary = Library()
 ##myLibrary.addDvd('Pirates of', 'John')
 ##myLibrary.viewDvd(0)
 ##myLibrary.editMember(0)
 ##myLibrary.viewMember(0)
 ##my_dvd = dvd('Hi', 'Sam', '1')
 ##my_dvd
+
+startApp()
