@@ -116,6 +116,7 @@ class Member:
 class Library:
     def __init__(self):
         self.__items = []
+        self.__members = []
 
     def addMember(self, newFirstName, newSurname, newPostcode):
         newId = len(self.__members)
