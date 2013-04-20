@@ -1,4 +1,4 @@
-class item:
+class Item:
     def __init__(self, title, author, uniId):
         self._title = title
         self._author = author
@@ -40,11 +40,11 @@ class item:
 
 ##              ADD IN APPROPRIATE GET METHODS FOR INFORMATION        
 
-class dvd(item):
+class DVD(Item):
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Director : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
-class book(item):
+class Book(Item):
     def __init__(self, isbn):
         self.__isbn = isbn
 
@@ -70,15 +70,15 @@ class book(item):
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Author : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner) + ', ISBN : ' + str(self.__isbn)
 
-class cd(item):
+class CD(Item):
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Artist : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
-class game(item):
+class Game(Item):
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Publisher : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner)
 
-class member:
+class Member:
     def __init__(self, uniqId, firstName, surname, postcode):
         self.__uniqId = uniqId
         self.__firstName = firstName
@@ -113,7 +113,7 @@ class member:
     def __repr__(self):
         return 'Unique ID : ' + str(self.__uniqId) + ', First Name : ' + str(self.__firstName) + ', Surname : ' + str(self.__surname) + ', Postcode : ' + str(self.__postcode) + ', Current Items : ' + str(self.__currentItems)
 
-class library:
+class Library:
     def __init__(self):
         self.__items = []
 
