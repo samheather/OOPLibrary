@@ -32,13 +32,26 @@ class Item:
         while choice not in (1, 2):
             print "Can't you even follow basic instructions?"
             choice = int(raw_input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher: "))
-        newData = raw_input("Ok.  What do you want to change it to?")
+        newData = raw_input("Ok.  What do you want to change it to? ")
         if (choice == 1):
             self._title = newData
         elif (choice == 2):
             self._author = newData
 
-##              ADD IN APPROPRIATE GET METHODS FOR INFORMATION        
+    def getTitle(self):
+        return self._title
+
+    def getAuthor(self):
+        return self._author
+
+    def isAvailable(self):
+        return self._available
+
+    def getUniId(self):
+        return self._unId
+
+    def getOwner(self):
+        return self._owner       
 
 class DVD(Item):
     def __repr__(self):
@@ -129,7 +142,7 @@ class Library:
         while choice not in (1, 2, 3):
             print "Can't you even follow basic instructions?"
             choice = int(raw_input("Enter 1 to change first name, 2 to change surname, 3 to change postcode: "))
-        newData = raw_input("Ok.  What do you want to change it to?")
+        newData = raw_input("Ok.  What do you want to change it to? ")
         if (choice == 1):
             self.__members[memberId].changeFirstName(newData)
         elif (choice == 2):
