@@ -194,7 +194,7 @@ def memberFunctions():
         myLibrary.deleteMember(memberId)
 
 def itemFunctions():
-    choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete aan item."))
+    choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete an item."))
     if (choiceFunct == 1):
         firstName = raw_input("Enter their First Name:")
         lastName = raw_input("Enter their Surname:")
