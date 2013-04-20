@@ -29,13 +29,14 @@ class item:
 
     def editItem(self):
         choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher.")
+        while choice not in (1, 2):
+            print "Can't you even follow basic instructions?"
+            choice = input("Enter 1 to change Title, 2 to change Author/Artist/Director/Publisher.")
         newData = raw_input("Ok.  What do you want to change it to?")
         if (choice == 1):
             self._title = newData
         elif (choice == 2):
             self._author = newData
-        else:
-            print "Can't you even follow basic instructions?"
 
 ##              ADD IN APPROPRIATE GET METHODS FOR INFORMATION        
 
@@ -55,6 +56,9 @@ class book:
 
     def editBook(self):
         choice = raw_input("Enter 1 to change title, 2 to change author, 3 to change ISBN: ")
+        while choice not in (1, 2, 3):
+            print "Can't you even follow basic instructions?"
+            choice = raw_input("Enter 1 to change title, 2 to change author, 3 to change ISBN: ")
         newData = raw_input("Enter the new value: ")
         if (choice ==  1):
             self._title = newData
@@ -62,8 +66,6 @@ class book:
             self._author = newData
         elif (choice == 3):
             self._isbn = newData
-        else:
-            print "Can't you even follow basic instructions"
 
     def __repr__(self):
         return 'Title : ' + str(self._title) + ', Author : ' + str(self._author) + ', Available : ' + str(self._available) + ', ID : ' + str(self._uniId) + ', Owner : ' + str(self._owner) + ', ISBN : ' + str(self.__isbn)
@@ -122,6 +124,9 @@ class library:
 
     def editMember(self, memberId):
         choice = input("Enter 1 to change first name, 2 to change surname, 3 to change postcode")
+        while choice not in (1, 2, 3):
+            print "Can't you even follow basic instructions?"
+            choice = input("Enter 1 to change first name, 2 to change surname, 3 to change postcode")
         newData = raw_input("Ok.  What do you want to change it to?")
         if (choice == 1):
             self.__members[memberId].changeFirstName(newData)
@@ -129,8 +134,6 @@ class library:
             self.__members[memberId].changeSurname(newData)
         elif (choice == 3):
             self.__members[memberId].changePostcode(newData)
-        else:
-            print "Can't you even follow basic instructions?"
 
     def deleteMember(self, memberId):
         self.__members.pop(memberId)
@@ -170,17 +173,21 @@ class library:
 def startApp():
     while True:
         choiceCat = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
+        while choiceCat not in (1, 2, 3):
+            print "Follow the instructions dumbo"
+            choiceCat = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
         if (choiceCat == 1):
             memberFunctions()
         elif (choiceCat == 2):
             itemFunctions()
         elif (choiceCat == 3):
             checkInOut()
-        else:
-            print "Follow the instructions dumbo"
 
 def memberFunctions():
     choiceFunct = int(raw_input("Enter 1 to create a member, 2 to view a members information and 3 to delete a member"))
+    if choiceFunct not in (1, 2, 3):
+        print "Follow the instructions dumbo"
+        choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
     if (choiceFunct == 1):
         firstName = raw_input("Enter their First Name:")
         lastName = raw_input("Enter their Surname:")
@@ -194,7 +201,14 @@ def memberFunctions():
         myLibrary.deleteMember(memberId)
 
 def itemFunctions():
+<<<<<<< HEAD
     choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete an item."))
+=======
+    choiceFunct = int(raw_input("Enter 1 to create an item, 2 to view an items information and 3 to delete aan item."))
+    if choiceFunct not in (1, 2, 3):
+        print "Follow the instructions dumbo"
+        choiceFunct = int(raw_input("Enter 1 for member functions, 2 for item functions or 3 to rent/return"))
+>>>>>>> patch-1
     if (choiceFunct == 1):
         firstName = raw_input("Enter their First Name:")
         lastName = raw_input("Enter their Surname:")
