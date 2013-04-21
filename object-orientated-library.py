@@ -48,7 +48,7 @@ class Item:
         return self._available
 
     def getUniId(self):
-        return self._unId
+        return self._uniId
 
     def getOwner(self):
         return self._owner       
