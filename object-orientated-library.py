@@ -234,14 +234,14 @@ class Library:
 ##                          UPDATED TO HERE, UNTESTED UP TO HERE.
 
 def prompt_input(question, acceptedAnswers):
-    ans = raw_input(question + " ")
-    if isinstance(acceptedAnswers[0], int):
-        ans = int(ans)
-    if ans in acceptedAnswers:
-        return ans
-    else:
-        print random.choice(["Can't you even follow basic instructions?", "Follow the instructions dumbo", "Not a valid choice"])
-        return prompt_input(question, acceptedAnswers)
+    while True:
+        ans = raw_input(question + " ")
+        if isinstance(acceptedAnswers[0], int):
+            ans = int(ans)
+        if ans in acceptedAnswers:
+            return ans
+        else:
+            print random.choice(["Can't you even follow basic instructions?", "Follow the instructions dumbo", "Not a valid choice"])
 
 def startApp():
     while True:
